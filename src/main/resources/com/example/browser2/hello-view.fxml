@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.web.WebView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
-<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.browser2.HelloController">
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.browser2.HelloController">
   <tabs>
     <Tab fx:id="initialTab" onCloseRequest="#checkLastTab">
       <content>
@@ -16,11 +12,9 @@
                <children>
                   <Button layoutX="6.0" mnemonicParsing="false" onAction="#backPage" text="Back" AnchorPane.leftAnchor="6.0" />
                   <Button layoutX="55.0" mnemonicParsing="false" onAction="#nextPage" text="Forwad" AnchorPane.leftAnchor="55.0" />
-                  <TextField fx:id="textField" layoutX="182.0" onAction="#loadPage" prefHeight="26.0" prefWidth="337.0" AnchorPane.leftAnchor="182.0" AnchorPane.rightAnchor="81.0" />
+                  <TextField fx:id="textField" layoutX="182.0" onAction="#loadPage" prefHeight="26.0" prefWidth="412.0" AnchorPane.leftAnchor="182.0" AnchorPane.rightAnchor="6.0" />
                   <Button layoutX="117.0" mnemonicParsing="false" onAction="#reloadPage" text="Reload" AnchorPane.leftAnchor="117.0" />
-                  <Button layoutX="528.0" mnemonicParsing="false" text="Options" AnchorPane.rightAnchor="14.0" />
                   <WebView fx:id="webView" layoutX="-1.0" layoutY="29.0" prefHeight="344.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
-                  <ProgressBar fx:id="progress" layoutY="29.0" prefHeight="8.0" prefWidth="600.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children></AnchorPane>
       </content>
     </Tab>

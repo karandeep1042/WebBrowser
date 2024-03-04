@@ -1,5 +1,4 @@
 package com.example.browser2;
-
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,35 +9,22 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebHistory;
 import javafx.scene.web.WebView;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
-
     @FXML
     private TabPane tabPane;
-
     @FXML
     private WebView webView;
-
     @FXML
     private TextField textField;
-
     @FXML
     private WebEngine engine;
-
     @FXML
     private WebHistory history;
-
     @FXML
     private Tab initialTab;
-
     private String homePage;
-
-    private String initialTabName;
-
-    @FXML
-    private ProgressBar progress;
 
     public void checkLastTab(){
         if(tabPane.getTabs().size()==2){
@@ -63,15 +49,11 @@ public class HelloController implements Initializable {
         pane.getChildren().add(reloadbtn);
 
         TextField searchBar = new TextField();
-        searchBar.setPrefWidth(337);
+        searchBar.setPrefWidth(412);
         searchBar.setPrefHeight(26);
         AnchorPane.setLeftAnchor(searchBar,182.0);
-        AnchorPane.setRightAnchor(searchBar,81.0);
+        AnchorPane.setRightAnchor(searchBar,6.0);
         pane.getChildren().add(searchBar);
-
-        Button optionsbtn = new Button("Options");
-        AnchorPane.setRightAnchor(optionsbtn,14.0);
-        pane.getChildren().add(optionsbtn);
 
         WebView page = new WebView();
         page.setPrefWidth(600);
@@ -85,18 +67,15 @@ public class HelloController implements Initializable {
         tab2.setContent(pane);
         tabPane.getTabs().add(tabPane.getTabs().size()-1,tab2);
         tabPane.getSelectionModel().select(tabPane.getTabs().size()-2);
-        System.out.println(tabPane.getTabs().size());
         tab2.setOnCloseRequest(event->{
-            if(tabPane.getTabs().size()==2){
+            if(tabPane.getTabs().size()<=2){
                 Platform.exit();
             }
         });
 
         WebEngine newTabEngine = page.getEngine();
         newTabEngine.load("https://www.google.com");
-        System.out.println("Initial title "+newTabEngine.getTitle());
         WebHistory webHistory = newTabEngine.getHistory();
-        System.out.println("Current url = "+newTabEngine.getLocation());
 
         searchBar.setOnAction(e->{
             if(searchBar.getText().startsWith("https")){
@@ -116,7 +95,6 @@ public class HelloController implements Initializable {
 
         newTabEngine.titleProperty().addListener((observable,oldValue,newValue)->{
             tab2.setText(newTabEngine.getTitle());
-            System.out.println("Current title "+newTabEngine.getTitle());
         });
 
         backbtn.setOnAction(e->{
@@ -163,7 +141,6 @@ public class HelloController implements Initializable {
         else{
             engine.load("https://www.google.com/search?q="+textField.getText());
         }
-        progress.progressProperty().bind(engine.getLoadWorker().progressProperty());
         engine.locationProperty().addListener((observable,oldValue,newValue)->{
             textField.setText(engine.getLocation());
         });
